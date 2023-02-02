@@ -1,9 +1,5 @@
 import { validateHeaderName } from 'http'
 import User from '../../entities/User'
-export const userValidate = (user:User):boolean =>{
-
-  return true
-}
 
 export const validate = (name: string, value: string | undefined):boolean => {
   if(name === 'username'){

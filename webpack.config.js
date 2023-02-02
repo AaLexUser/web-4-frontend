@@ -39,15 +39,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
-      {
-        test: /\.(ts)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      }
     ],
   },
   devServer:{
