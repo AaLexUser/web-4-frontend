@@ -26,6 +26,12 @@ export const usernameValidate = (username: string | undefined): boolean => {
   return false
 
 }
+export const usernameValidateString = (username: string | undefined): string => {
+  if(usernameValidate(username) && username ){
+    return username
+  }
+  else return ''
+}
 
 export const passwordValidate = (password: string | undefined):boolean => {
   if(password === undefined || password === ''){
@@ -40,4 +46,10 @@ export const passwordValidate = (password: string | undefined):boolean => {
     return false
   }
   return false
+}
+export const passwordValidateString = (password: string | undefined): string => {
+  if(passwordValidate(password) && password){
+    return password
+  }
+  else return ''
 }

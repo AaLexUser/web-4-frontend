@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-import pointSlice from './slices/PointSlice.js'
-import tokenSlice from './slices/TokenSlice.js'
+import pointSlice from './slices/PointSlice'
 import userSlice from './slices/UserSlice'
+import errorSlice from './slices/ErrorSlice'
+import authSlice from './slices/AuthSlice'
+import TestSlice from './slices/TestSlice'
 
 const store = configureStore({
   reducer: {
-    token: tokenSlice,
+    error: errorSlice,
     points: pointSlice,
-    user: userSlice
+    user: userSlice,
+    auth: authSlice,
+    test: TestSlice
   },
   devTools: true,
 })
