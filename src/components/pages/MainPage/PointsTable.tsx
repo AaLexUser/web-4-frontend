@@ -15,6 +15,7 @@ const columns: GridColDef[] = [
   {field: 'hitResult', headerName: 'Result'},
   {field: 'time', headerName: 'Time', width: 300},
   {field: 'executionTime', headerName: 'ex. Time'},
+  {field: 'username', headerName: 'User'}
 ]
 
 const PointsTable = () => {

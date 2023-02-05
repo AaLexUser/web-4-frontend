@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppBar from 'react-toolbox/lib/app_bar'
 import Navigation from 'react-toolbox/lib/navigation'
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../store/slices/UserSlice'
 import Button from 'react-toolbox/lib/button'
+import { useGetAvatarQuery } from '../../store/slices/AvatarApi'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -18,6 +19,7 @@ const GithubIcon = () => (
 const Navbar = () => {
   const user = useSelector(selectUser)
   const nav = useNavigate()
+  const {data= {url: ''}, isLoading } = useGetAvatarQuery(user.user.token)
   const authStatus = user.user.username !== '' ? true : false
   return (
     <AppBar
@@ -37,11 +39,10 @@ const Navbar = () => {
         />
 
       </Navigation>
-      <Avatar
-        icon={<GithubIcon />}
-        onClick={() => nav('/profile', { replace: false })}
-        title="Javier"
-      />
+      {authStatus &&
+        <Avatar onClick={() => nav('/profile', { replace: false })}>
+          <img src={data.url}/>
+        </Avatar>}
     </AppBar>
   )
 }

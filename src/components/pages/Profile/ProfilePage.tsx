@@ -1,9 +1,10 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../utils/hook'
-import { resetUser } from '../../store/slices/UserSlice'
+import { useAppDispatch, useAppSelector } from '../../../utils/hook'
+import { resetUser } from '../../../store/slices/UserSlice'
 import { Card, CardTitle, CardText } from 'react-toolbox/lib/card'
 import Button from 'react-toolbox/lib/button'
 import { useNavigate } from 'react-router-dom'
+import Navigation from 'react-toolbox/lib/navigation'
 
 const ProfilePage = () => {
   const user = useAppSelector(state => state.user).user
@@ -20,7 +21,10 @@ const ProfilePage = () => {
         <CardText>
           <h3>Username: {user.username}</h3>
         </CardText>
-        <Button label='Logout' onClick={handleOnLogout} raised accent />
+        <Navigation type='horizontal'>
+          <Button label='Logout' onClick={handleOnLogout} raised accent />
+          <Button label='Settings' onClick={()=> nav('/settings', { replace: false })} raised flat />
+        </Navigation>
       </Card>
     </section>
   )
