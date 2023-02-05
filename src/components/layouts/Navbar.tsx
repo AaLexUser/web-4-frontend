@@ -6,6 +6,7 @@ import Avatar from 'react-toolbox/lib/avatar'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../store/slices/UserSlice'
+import Button from 'react-toolbox/lib/button'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -17,21 +18,29 @@ const GithubIcon = () => (
 const Navbar = () => {
   const user = useSelector(selectUser)
   const nav = useNavigate()
+  const authStatus = user.user.username !== '' ? true : false
   return (
     <AppBar
       title="WEB LAB 4"
-      leftIcon="menu"
+      leftIcon="radio_button_unchecked"
       rightIcon={<GithubIcon />}
-      onRightIconClick={() => nav('/', { replace: true })}
+      onLeftIconClick={() => nav('/', { replace: true })}
     >
       <Navigation type="horizontal">
-        <Link to="/sign-up">
-          {user.user.username !== '' ? user.user.username : 'Sign Up'}
-        </Link>
+        <Button 
+          label= {user.user.username !== '' ? user.user.username : 'Sign In'} 
+          onClick={() => nav( `${authStatus ? '/profile' : '/sign-in'}`, { replace: false })}
+          style = {{
+            color: 'white'
+          }}
+          flat
+        />
+
       </Navigation>
       <Avatar
         icon={<GithubIcon />}
         onClick={() => nav('/profile', { replace: false })}
+        title="Javier"
       />
     </AppBar>
   )

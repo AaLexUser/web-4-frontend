@@ -54,6 +54,8 @@ const SignInPage = () => {
       <AuthCard
         title='Sign In'
         handleOnSubmit={handleOnSubmit}
+        rightButtonTitle="Didn't register yet?"
+        onRightButtonClick={() => navigate('/sign-up', { replace: false })}
       />
       <ErrorDialog />
     </section>

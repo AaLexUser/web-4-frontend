@@ -1,5 +1,5 @@
 import { validateHeaderName } from 'http'
-import User from '../../entities/User'
+import User from '../../types/User'
 
 export const validate = (name: string, value: string | undefined):boolean => {
   if(name === 'username'){
