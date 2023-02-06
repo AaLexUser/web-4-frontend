@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppBar from 'react-toolbox/lib/app_bar'
 import Navigation from 'react-toolbox/lib/navigation'
@@ -21,6 +21,7 @@ const Navbar = () => {
   const nav = useNavigate()
   const {data= {url: ''}, isLoading } = useGetAvatarQuery(user.user.token)
   const authStatus = user.user.username !== '' ? true : false
+  useEffect(() => console.log(data), [data])
   return (
     <AppBar
       title="WEB LAB 4"
@@ -29,6 +30,14 @@ const Navbar = () => {
       onLeftIconClick={() => nav('/', { replace: true })}
     >
       <Navigation type="horizontal">
+        <Button 
+          label= 'Main Page'
+          onClick={() => nav( `${authStatus ? '/main' : '/sign-in'}`, { replace: false })}
+          style = {{
+            color: 'white'
+          }}
+          flat
+        />
         <Button 
           label= {user.user.username !== '' ? user.user.username : 'Sign In'} 
           onClick={() => nav( `${authStatus ? '/profile' : '/sign-in'}`, { replace: false })}
@@ -40,8 +49,9 @@ const Navbar = () => {
 
       </Navigation>
       {authStatus &&
-        <Avatar onClick={() => nav('/profile', { replace: false })}>
-          <img src={data.url}/>
+        <Avatar onClick={() => nav('/profile', { replace: false })} title={user.user.username.toUpperCase()}
+          style={{backgroundColor: 'deepskyblue'}}>
+          {data.url && data.url !=='' && <img src={data.url}/>}
         </Avatar>}
     </AppBar>
   )

@@ -28,7 +28,7 @@ const ProfileSettings = () => {
     </section>)
   return (
     <section style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height:'600px'}}>
-      <Card style={{width: '50%'}}>
+      <Card style={{width: '30rem'}}>
         <CardTitle title='Profile Settings'/>
         <CardText>
           <Input type='text' 

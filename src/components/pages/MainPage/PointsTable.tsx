@@ -30,9 +30,9 @@ const PointsTable = () => {
     })
   } 
   
-  // useEffect(()=> {
-  //   setTable({data : formatData()})
-  // }, [data])
+  useEffect(()=> {
+
+  }, [data])
   useEffect (() => console.log(table.data), [table])
   return (
     <div style={{ height: 400, width: '100%' }}>
