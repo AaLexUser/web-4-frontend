@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../utils/hook'
 import { resetUser } from '../../../store/slices/UserSlice'
 import { Card, CardTitle, CardText } from 'react-toolbox/lib/card'
 import Button from 'react-toolbox/lib/button'
-import ProgressBar from 'react-toolbox/lib/progress_bar';
+import ProgressBar from 'react-toolbox/lib/progress_bar'
 import { useNavigate } from 'react-router-dom'
 import Input from 'react-toolbox/lib/input'
 import { useGetAvatarQuery, useSetAvatarMutation } from '../../../store/slices/AvatarApi'

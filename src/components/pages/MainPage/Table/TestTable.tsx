@@ -1,8 +1,8 @@
 
 import React from 'react'
 import dateFormat from 'dateformat'
-import { useAppSelector } from '../../../utils/hook'
-import { useGetPointsQuery } from '../../../store/slices/PointApi'
+import { useAppSelector } from '../../../../utils/hook'
+import { useGetPointsQuery } from '../../../../store/slices/PointApi'
 
 
 const TableBody = ({rows}) =>{
@@ -15,8 +15,8 @@ const TableBody = ({rows}) =>{
               <td>{item.x}</td>
               <td>{item.y}</td>
               <td>{item.r}</td>
-              <td>{item.hitResult? 'hit': 'miss'}</td>
-              <td>{dateFormat(item.time, 'd mmm yyyy H:MM:ss')}</td>
+              <td>{item.hitResult}</td>
+              <td>{item.time}</td>
               <td>{item.executionTime}</td>
             </tr>
           )

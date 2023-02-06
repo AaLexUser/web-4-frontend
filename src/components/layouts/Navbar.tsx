@@ -21,7 +21,6 @@ const Navbar = () => {
   const nav = useNavigate()
   const {data= {url: ''}, isLoading } = useGetAvatarQuery(user.user.token)
   const authStatus = user.user.username !== '' ? true : false
-  useEffect(() => console.log(data), [data])
   return (
     <AppBar
       title="WEB LAB 4"

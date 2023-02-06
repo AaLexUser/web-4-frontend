@@ -12,7 +12,7 @@ export const pointApi = createApi({
     }
   }),
   endpoints: (build) => ({
-    getPoints: build.query({
+    getPoints: build.query<Point[], string>({
       query:(token) => ({
         url: 'get-points',
         headers: {
@@ -37,9 +37,30 @@ export const pointApi = createApi({
         }
       }),
       invalidatesTags: [{type: 'Points', id: 'LIST'}]
-    })
+    }),
+    deletePoint: build.mutation<void, {token: string, id: number | string}> ({
+      query: ({token, id }) => ({
+        url: 'delete/'+ id,
+        method: 'DELETE',
+        headers:{
+          'Authorization': 'Bearer ' + token
+        }
+      }),
+      invalidatesTags: [{type: 'Points', id: 'LIST'}]
+    }),
+    updatePoint: build.mutation<void, {token: string, id: number | string, body: Point}> ({
+      query: ({token, id, body }) => ({
+        url: 'update/'+ id,
+        method: 'PUT',
+        body,
+        headers:{
+          'Authorization': 'Bearer ' + token
+        }
+      }),
+      invalidatesTags: [{type: 'Points', id: 'LIST'}]
+    }),
   })
 })
 
-export const {useGetPointsQuery, useAddPointMutation} = pointApi
+export const {useGetPointsQuery, useAddPointMutation, useDeletePointMutation, useUpdatePointMutation} = pointApi
 

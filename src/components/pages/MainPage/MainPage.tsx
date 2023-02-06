@@ -4,8 +4,9 @@ import {selectUser} from '../../../store/slices/UserSlice'
 import PointForm from './PointForm'
 import { useNavigate } from 'react-router-dom'
 import { Card, CardTitle, CardText, CardMedia } from 'react-toolbox/lib/card'
-import PointsTable from './PointsTable'
-import TestTable from './TestTable'
+import PointsTable from './Table/PointsTable'
+import TestTable from './Table/TestTable'
+import ToolboxTable from './Table/ToolboxTable'
 
 const MainPage = () => {
   const user = useSelector(selectUser)
