@@ -1,21 +1,21 @@
 import React from 'react'
 import Input from 'react-toolbox/lib/input'
 interface PointInputProps{
-  label: string,
+  value: string,
   coord: string,
-  setCoord: (coord: string) => void,
+  onChange: (coord: string) => void,
 }
 
-const PointInput: React.FC<PointInputProps> = ({label ,coord, setCoord}) => {
+const PointInput: React.FC<PointInputProps> = ({coord ,value, onChange}) => {
   return (
     <section>
       <Input type='text' 
-        label={label.toUpperCase() + (label !== 'r' ? ' Coordinate' : ' Radius')}
+        label={coord.toUpperCase() + (coord !== 'r' ? ' Coordinate' : ' Radius')}
         icon='location_searching'
         name='coord'
-        value={coord}
+        value={value}
         required
-        onChange={(newCoord: string) => setCoord(newCoord)}
+        onChange={onChange}
         maxLength={16 } error={''}
       />
     </section>

@@ -5,36 +5,35 @@ import Input from 'react-toolbox/lib/input'
 import PointInput from '../PointInput'
 import ErrorDialog from '../../../layouts/ErrorDialog'
 
-const UpdateForm = ({inputState, setInputState, onUpdateHandle}) => {
-  const [x, setX] = useState('')//TODO : сделать более универсальный интерфейс для PointInput
-  const [y, setY] = useState('')// для PointInput и PointForm
-  const [r, setR] = useState('')
+
+const UpdateForm = ({inputState, onUpdateHandle}) => {
+  const [coords, setCoords] = useState<{
+    x: string;
+    y: string;
+    r: string;}>({x: inputState.x, y: inputState.y,  r: inputState.r})
   return (
     <section>
-      <Card style={{width: '350px'}}>
+      <Card style={{width: '10 rem'}}>
         <CardTitle title='Coordinates'/>
         <CardText>
           <PointInput
-            label= 'x'
-            coord={x}
-            setCoord={setX}
+            coord= 'x'
+            value={coords.x}
+            onChange={(e)=> setCoords({...coords, x: e})}
           />
           <PointInput
-            label= 'y'
-            coord={y}
-            setCoord={setY}
+            coord= 'y'
+            value={coords.y}
+            onChange={(e)=> setCoords({...coords, y: e})}
           />
           <PointInput
-            label= 'r'
-            coord={r}
-            setCoord={setR}
+            coord= 'r'
+            value={coords.r}
+            onChange={(e)=> setCoords({...coords, r: e})}
           />
-          <Button icon='login' label='Submit' onClick={onUpdateHandle} raised primary disabled={false} />
+          <Button icon='login' label='Update' onClick={() => onUpdateHandle(coords)} raised primary disabled={false} />
         </CardText>
       </Card>
-      <ErrorDialog
-        
-      />
     </section>
   )
 }

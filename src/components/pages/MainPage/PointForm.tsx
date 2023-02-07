@@ -21,19 +21,19 @@ const PointForm = () => {
         <CardTitle title='Coordinates'/>
         <CardText>
           <PointInput
-            label= 'x'
-            coord={x}
-            setCoord={setX}
+            coord= 'x'
+            value={x}
+            onChange={(e: string) => setX(e)}
           />
           <PointInput
-            label= 'y'
-            coord={y}
-            setCoord={setY}
+            coord= 'y'
+            value={y}
+            onChange={(e) => setY(e)}
           />
           <PointInput
-            label= 'r'
-            coord={r}
-            setCoord={setR}
+            coord= 'r'
+            value={r}
+            onChange={(e) => setY(e)}
           />
           <Button icon='login' label='Submit' onClick={handleOnSubmit} raised primary disabled={false} />
         </CardText>

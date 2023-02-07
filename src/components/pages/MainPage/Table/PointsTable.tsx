@@ -80,7 +80,7 @@ const PointsTable = () => {
   }, [data])
   useEffect(()=> console.log(table), [table])
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: '30rem', width: '100%' }}>
       {isLoading && <ProgressBar type="linear" mode="indeterminate" />}
       <DataGrid
         components={{
@@ -91,11 +91,10 @@ const PointsTable = () => {
         }}
         rows={table}
         columns={columns}
-        pageSize={5}
+        pageSize={10}
         rowsPerPageOptions={[5, 10]}
         checkboxSelection
         onSelectionModelChange={(e) => setSelected(e)}
-        // onCellDoubleClick={(e)=> console.log(e)}
         onCellDoubleClick={(e)=> setUpdateDialog({active: true, event: e.row})}
       />
       <UpdateRowDialog 
