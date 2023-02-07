@@ -23,6 +23,7 @@ import {
   useGridApiContext,
   useGridSelector,
 } from '@mui/x-data-grid'
+import PointResponse from '../../../../types/PointResponse'
 
 
 
@@ -30,11 +31,10 @@ const columns: GridColDef[] = [
   {field: 'x', headerName: 'X'},
   {field: 'y', headerName: 'Y'},
   {field: 'r', headerName: 'R'},
-  {field: 'hitResult', headerName: 'Result'},
-  {field: 'time', headerName: 'Time', width: 300},
+  {field: 'hitResult', headerName: 'isHit?'},
+  {field: 'time', headerName: 'Time', width: 180},
   {field: 'executionTime', headerName: 'ex. Time'},
   {field: 'username', headerName: 'User'},
-  {field: 'update', headerName: 'Update'}
 ]
 const DeleteButton = ({onDeleteHandle}) => {
   const apiRef = useGridApiContext()
@@ -70,17 +70,17 @@ const PointsTable = () => {
     })
   }
   useEffect(()=> {
-    if (isSuccess) setTable([...data].map((point: Point) => {
+    if (isSuccess) setTable([...data].map((point: PointResponse) => {
       return {
         ...point,
-        hitResult : point.hitResult ? 'hit': 'miss',
+        hitResult: point.hitResult ? 'hit': 'miss',
         time: dateFormat(point.time, 'd mmm yyyy H:MM:ss')
       }
     }))
   }, [data])
-  useEffect(()=> console.log(table), [table])
+  useEffect(()=> console.log(data), [data])
   return (
-    <div style={{ height: '30rem', width: '100%' }}>
+    <div style={{ height: '30rem', width: '100%', margin: '0.1rem' }}>
       {isLoading && <ProgressBar type="linear" mode="indeterminate" />}
       <DataGrid
         components={{

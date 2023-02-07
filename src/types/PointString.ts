@@ -3,7 +3,7 @@ interface PointString {
   x: string | number,
   y: string | number, 
   r: string | number,
-  hitResult?: string | boolean,
+  hitResult: string | boolean,
   time?: string | Date,
   executionTime?: number | string,
   username?: string

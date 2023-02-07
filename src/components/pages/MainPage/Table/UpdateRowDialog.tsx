@@ -16,7 +16,7 @@ interface UpdateRowDialogProps {
 
 const UpdateRowDialog: React.FC<UpdateRowDialogProps> = ({updateState, setUpdateState}) => {
   const row = updateState.event
-  if (!row) return <h1>Error</h1>
+  if (!row) return <h1></h1>
   const token = useAppSelector(state => state.user).user.token
   const [inputState, setInputState] = useState({x: row.x, y: row.y, r: row.r})
   const [updateRow, {}] = useUpdatePointMutation()

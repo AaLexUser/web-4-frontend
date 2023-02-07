@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import Point from '../../types/Point'
+import PointResponse from '../../types/PointResponse'
 
 
 export const pointApi = createApi({
@@ -12,7 +13,7 @@ export const pointApi = createApi({
     }
   }),
   endpoints: (build) => ({
-    getPoints: build.query<Point[], string>({
+    getPoints: build.query<PointResponse[], string>({
       query:(token) => ({
         url: 'get-points',
         headers: {

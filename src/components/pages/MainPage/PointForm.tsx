@@ -17,7 +17,11 @@ const PointForm = () => {
   }
   return (
     <section>
-      <Card style={{width: '350px'}}>
+      <Card style={{
+        width: '25rem',
+        height: 'auto',
+        margin: '0.1rem'
+      }}>
         <CardTitle title='Coordinates'/>
         <CardText>
           <PointInput
@@ -33,7 +37,7 @@ const PointForm = () => {
           <PointInput
             coord= 'r'
             value={r}
-            onChange={(e) => setY(e)}
+            onChange={(e) => setR(e)}
           />
           <Button icon='login' label='Submit' onClick={handleOnSubmit} raised primary disabled={false} />
         </CardText>
