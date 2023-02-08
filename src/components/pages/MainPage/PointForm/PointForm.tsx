@@ -37,8 +37,8 @@ const PointForm = () => {
   return (
     <section>
       <Card style={{
-        width: '25rem',
-        height: 'auto',
+        width: '330px',
+        height: '390px',
         margin: '0.1rem'
       }}>
         <CardTitle title='Coordinates'/>

@@ -30,8 +30,8 @@ const MainPage = () => {
       }}>
         <div style={{
           display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-start'
+          flexWrap: 'wrap',
+          
         }}>
           <PointForm/>
           <CardGraph/>

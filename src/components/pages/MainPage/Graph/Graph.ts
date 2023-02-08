@@ -1,4 +1,4 @@
-import PointResponse from "../../../../types/PointResponse"
+import PointResponse from '../../../../types/PointResponse'
 
 export default class Graph{
   private canvas: HTMLCanvasElement
@@ -22,6 +22,8 @@ export default class Graph{
   }
 
   public draw(){
+    this.ctx.fillStyle = '#f1efed'
+    this.ctx.fillRect(0,0,this.xMax,this.yMax)
     // draw areas
     this.ctx.fillStyle = '#FF6200'
     this.ctx.beginPath()
@@ -88,9 +90,10 @@ export default class Graph{
     this.ctx.fill()
   }
 
-  getMousePosition(e: MouseEvent) {
-    let mouseX = e.offsetX * this.canvas.width / this.canvas.clientWidth | 0
-    let mouseY = e.offsetY * this.canvas.height / this.canvas.clientHeight | 0
+  getMousePosition(e) {
+    const rect = this.canvas.getBoundingClientRect()
+    let mouseX = e.clientX - rect.left | 0
+    let mouseY = e.clientY - rect.top | 0
     return {x: mouseX, y: mouseY}
   }
 }

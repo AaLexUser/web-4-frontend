@@ -1,24 +1,23 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import Graph from './Graph'
 import { useGetPointsQuery, useAddPointMutation } from '../../../../store/slices/PointApi'
 import { useAppSelector } from '../../../../utils/hook'
 import { validateValue } from '../../../../utils/validators/PointValidation'
+import { MouseEvent } from 'react'
 
 const CanvasGraph = () => {
-  const canvas = useRef<HTMLCanvasElement | null>(null)
   const token = useAppSelector(state => state.user).user.token
   const {data = [] } = useGetPointsQuery(token)
+  const canvas = useRef<HTMLCanvasElement | null>(null)
   const [addPoint, {}] = useAddPointMutation()
   const pointInput = useAppSelector(state => state.pointInput)
   let graph: Graph = new Graph(canvas.current)
-  useEffect(()=>{
-    console.log(pointInput)
-  }, [pointInput])
 
-  const handleClick = async (event: MouseEvent) => {
-    console.log(pointInput)
+  const handleClick = async (event) => {
+    console.log(event)
     const r = pointInput.r
     if(r === '' || !canvas.current){
+      alert('Error: R value: ' + r + ' - is incorrect')
       return
     }
     if(!validateValue(r, 'r')){
@@ -31,7 +30,6 @@ const CanvasGraph = () => {
     let h = canvas.current.height
     let scaleX = (x - w / 2) * +r / (1 / 3 * w)
     let scaleY = -(y - h / 2) * +r / (1 / 3 * h)
-    console.log(scaleX)
     if (!validateValue(`${scaleX}`, 'x')) {
       alert('Error: X value:' + scaleX + ' – is incorrect!')
       return
@@ -53,7 +51,9 @@ const CanvasGraph = () => {
     if (canvas.current) {
       graph = new Graph(canvas.current)
       graph.draw()
-      canvas.current.addEventListener('click', (e: MouseEvent)=>handleClick(e))
+      data.map(point => {
+        graph.drawPoint(point)
+      })
     }
   }, [])
   useEffect(() => {
@@ -66,7 +66,7 @@ const CanvasGraph = () => {
   }, [data, canvas.current, graph])
   return (
     <div>
-      <canvas ref={canvas} width="300" height="300">Interactive area of the graph</canvas>
+      <canvas onClick={(e)=>handleClick(e)} ref={canvas} width="300" height="300">Interactive area of the graph</canvas>
     </div>
   )
 }
