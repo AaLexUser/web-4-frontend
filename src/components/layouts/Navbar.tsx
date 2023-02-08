@@ -28,7 +28,7 @@ const Navbar = () => {
       rightIcon={<GithubIcon />}
       onLeftIconClick={() => nav('/', { replace: true })}
     >
-      <p style={{fontFamily: "Dancing Script, cursive"}}> Alexey Lapin P32101 variant #3210173</p>
+      <p style={{fontFamily: 'Dancing Script, cursive'}}> Alexey Lapin P32101 variant #3210173</p>
       <Navigation type="horizontal">
         <Button 
           label= 'Main Page'

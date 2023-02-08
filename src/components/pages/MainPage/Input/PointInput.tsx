@@ -4,9 +4,10 @@ interface PointInputProps{
   value: string,
   coord: string,
   onChange: (coord: string) => void,
+  error?: string
 }
 
-const PointInput: React.FC<PointInputProps> = ({coord ,value, onChange}) => {
+const PointInput: React.FC<PointInputProps> = ({coord ,value, onChange, error}) => {
   return (
     <section>
       <Input type='text' 
@@ -16,7 +17,7 @@ const PointInput: React.FC<PointInputProps> = ({coord ,value, onChange}) => {
         value={value}
         required
         onChange={onChange}
-        maxLength={16 } error={''}
+        maxLength={16 } error={error ? error: ''}
       />
     </section>
   )

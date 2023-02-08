@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Card, CardTitle, CardText } from 'react-toolbox/lib/card'
 import Button from 'react-toolbox/lib/button'
 import Input from 'react-toolbox/lib/input'
-import PointInput from '../PointInput'
+import PointInput from '../Input/PointInput'
 import ErrorDialog from '../../../layouts/ErrorDialog'
 
 

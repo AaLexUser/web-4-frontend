@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { useAppSelector } from '../../../utils/hook'
 import {selectUser} from '../../../store/slices/UserSlice'
-import PointForm from './PointForm'
+import PointForm from './PointForm/PointForm'
 import { useNavigate } from 'react-router-dom'
 import { Card, CardTitle, CardText, CardMedia } from 'react-toolbox/lib/card'
 import PointsTable from './Table/PointsTable'

@@ -33,7 +33,7 @@ const columns: GridColDef[] = [
   {field: 'r', headerName: 'R'},
   {field: 'hitResult', headerName: 'isHit?'},
   {field: 'time', headerName: 'Time', width: 180},
-  {field: 'executionTime', headerName: 'ex. Time'},
+  {field: 'executionTime', headerName: 'ex. Time ms'},
   {field: 'username', headerName: 'User'},
 ]
 const DeleteButton = ({onDeleteHandle}) => {

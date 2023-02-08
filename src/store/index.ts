@@ -3,6 +3,7 @@ import {pointApi} from './slices/PointApi'
 import userSlice from './slices/UserSlice'
 import errorSlice from './slices/ErrorSlice'
 import authSlice from './slices/AuthSlice'
+import pointInputSlice  from '../components/pages/MainPage/PointForm/PointInputSlice'
 import { avatarApi } from './slices/AvatarApi'
 import { 
   persistStore,
@@ -19,6 +20,7 @@ import storage from 'redux-persist/lib/storage'
 const rootReducer = combineReducers({
   [pointApi.reducerPath]: pointApi.reducer,
   [avatarApi.reducerPath]: avatarApi.reducer,
+  pointInput: pointInputSlice,
   error: errorSlice,
   user: userSlice,
   auth: authSlice,
@@ -27,7 +29,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[avatarApi.reducerPath]}`]
+  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[avatarApi.reducerPath]}`, 'pointInput']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

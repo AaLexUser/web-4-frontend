@@ -17,6 +17,9 @@ export default class Graph{
       }
     }
   }
+  public getCanvas(){
+    return this.canvas
+  }
 
   public draw(){
     // draw areas
@@ -85,7 +88,7 @@ export default class Graph{
     this.ctx.fill()
   }
 
-  getMousePosition(e) {
+  getMousePosition(e: MouseEvent) {
     let mouseX = e.offsetX * this.canvas.width / this.canvas.clientWidth | 0
     let mouseY = e.offsetY * this.canvas.height / this.canvas.clientHeight | 0
     return {x: mouseX, y: mouseY}
