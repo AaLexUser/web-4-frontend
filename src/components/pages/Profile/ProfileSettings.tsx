@@ -6,7 +6,7 @@ import Button from 'react-toolbox/lib/button'
 import ProgressBar from 'react-toolbox/lib/progress_bar'
 import { useNavigate } from 'react-router-dom'
 import Input from 'react-toolbox/lib/input'
-import { useGetAvatarQuery, useSetAvatarMutation } from '../../../store/slices/AvatarApi'
+import { useGetAvatarQuery, useSetAvatarMutation, useDeleteUserMutation } from '../../../store/slices/UserApi'
 import _Avatar from '../../../types/Avatar'
 
 const ProfileSettings = () => {
@@ -14,12 +14,24 @@ const ProfileSettings = () => {
   const token = useAppSelector(state => state.user).user.token
   const {data= {url: ''}, isLoading } = useGetAvatarQuery(token)
   const [setAvatar, {isSuccess}] = useSetAvatarMutation()
+  const [deleteUser, {isSuccess: isDeleteSuccess}] = useDeleteUserMutation()
+
   const [urlInput, setUrlInput] = useState('')
   const nav = useNavigate()
+  const dispatch = useAppDispatch()
   useEffect(()=> {if (!isLoading && data) setUrlInput(data.url) }, [data])
   const handleOnSave = async () => {
     await setAvatar({token: token, body: {url: urlInput}}).unwrap()
   }
+  const handleOnDelete = async () => {
+    await deleteUser(token).unwrap()
+  }
+  useEffect(()=> {
+    if(isDeleteSuccess){ 
+      nav('/', { replace: true })
+      dispatch(resetUser())
+    }
+  }, [isDeleteSuccess])
   useEffect(()=> {if (isSuccess) nav('/main') }, [isSuccess])
   if (isLoading) return (
     <section>
@@ -41,6 +53,7 @@ const ProfileSettings = () => {
           />
         </CardText>
         <Button label='Save' onClick={handleOnSave} raised primary />
+        <Button label='Delete Account' onClick={handleOnDelete} raised accent />
       </Card>
     </section>
   )

@@ -22,7 +22,6 @@ const AuthCard: React.FC<AuthCardProps> = ({title, handleOnSubmit,rightButtonTit
   const dispatch = useAppDispatch()
   const nav = useNavigate()
   const handleChange = (name: string, value: string) => {
-    console.log(value)
     const error_field = `error_${[name]}`
     if (validate(name, value)) {
       dispatch(setAuth

@@ -26,7 +26,6 @@ const SignInPage = () => {
       },
     })
       .then((response) => {
-        console.log(response)
         dispatch(
           setUser({
             username: _state.username,
@@ -37,7 +36,6 @@ const SignInPage = () => {
         navigate('/main', { replace: true })
       })
       .catch((error) => {
-        console.log(error)
         dispatch(setError({ active: true, msg: error.message }))
       })
   }

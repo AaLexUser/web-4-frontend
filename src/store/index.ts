@@ -4,7 +4,7 @@ import userSlice from './slices/UserSlice'
 import errorSlice from './slices/ErrorSlice'
 import authSlice from './slices/AuthSlice'
 import pointInputSlice  from '../components/pages/MainPage/PointForm/PointInputSlice'
-import { avatarApi } from './slices/AvatarApi'
+import { userApi } from './slices/UserApi'
 import { 
   persistStore,
   persistReducer,
@@ -19,7 +19,7 @@ import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
   [pointApi.reducerPath]: pointApi.reducer,
-  [avatarApi.reducerPath]: avatarApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   pointInput: pointInputSlice,
   error: errorSlice,
   user: userSlice,
@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[avatarApi.reducerPath]}`, 'pointInput']
+  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[userApi.reducerPath]}`, 'pointInput']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -42,7 +42,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(pointApi.middleware).concat(avatarApi.middleware),
+    }).concat(pointApi.middleware).concat(userApi.middleware),
 })
 
 export default store

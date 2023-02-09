@@ -14,7 +14,6 @@ const CanvasGraph = () => {
   let graph: Graph = new Graph(canvas.current)
 
   const handleClick = async (event) => {
-    console.log(event)
     const r = pointInput.r
     if(r === '' || !canvas.current){
       alert('Error: R value: ' + r + ' - is incorrect')

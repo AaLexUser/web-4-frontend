@@ -78,7 +78,6 @@ const PointsTable = () => {
       }
     }))
   }, [data])
-  useEffect(()=> console.log(data), [data])
   return (
     <div style={{ height: '30rem', width: '100%', margin: '0.1rem' }}>
       {isLoading && <ProgressBar type="linear" mode="indeterminate" />}

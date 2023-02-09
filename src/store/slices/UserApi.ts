@@ -1,9 +1,9 @@
 import {createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import _Avatar from '../../types/Avatar'
 
-export const avatarApi = createApi({
-  reducerPath: 'avatarApi',
-  tagTypes: ['Avatar'],
+export const userApi = createApi({
+  reducerPath: 'userApi',
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:8080/api/v1/', 
     headers: {
@@ -18,7 +18,7 @@ export const avatarApi = createApi({
           'Authorization': 'Bearer ' + token
         }
       }),
-      providesTags: [{ type: 'Avatar', id: 'AVATAR' }]
+      providesTags: [{ type: 'User', id: 'USER' }]
     }),
     setAvatar: build.mutation<void, {token: string, body: {url: string}}>({
       query: ({token, body}) => ({
@@ -29,10 +29,20 @@ export const avatarApi = createApi({
           'Authorization': 'Bearer ' + token
         }
       }),
-      invalidatesTags: [{type: 'Avatar', id: 'AVATAR'}]
+      invalidatesTags: [{type: 'User', id: 'USER'}]
+    }),
+    deleteUser: build.mutation<void, string> ({
+      query:(token) => ({
+        url: 'delete-user',
+        method: 'DELETE',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      }),
+      invalidatesTags: [{type: 'User', id: 'USER'}]
     })
   })
 })
 
-export const {useGetAvatarQuery, useSetAvatarMutation} = avatarApi
+export const {useGetAvatarQuery, useSetAvatarMutation, useDeleteUserMutation} = userApi
 

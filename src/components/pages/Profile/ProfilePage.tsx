@@ -5,7 +5,7 @@ import { Card, CardTitle, CardText, CardMedia} from 'react-toolbox/lib/card'
 import Button from 'react-toolbox/lib/button'
 import { useNavigate } from 'react-router-dom'
 import Navigation from 'react-toolbox/lib/navigation'
-import { useGetAvatarQuery } from '../../../store/slices/AvatarApi'
+import { useGetAvatarQuery } from '../../../store/slices/UserApi'
 import ProgressBar from 'react-toolbox/lib/progress_bar'
 
 const ProfilePage = () => {
