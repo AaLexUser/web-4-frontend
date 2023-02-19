@@ -4,6 +4,7 @@ import userSlice from './slices/UserSlice'
 import errorSlice from './slices/ErrorSlice'
 import authSlice from './slices/AuthSlice'
 import pointInputSlice  from '../components/pages/MainPage/PointForm/PointInputSlice'
+import updatePointInputSlice from '../components/pages/MainPage/Table/UpdatePointInputSlice'
 import { userApi } from './slices/UserApi'
 import { 
   persistStore,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   [pointApi.reducerPath]: pointApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
   pointInput: pointInputSlice,
+  updatePointInput: updatePointInputSlice,
   error: errorSlice,
   user: userSlice,
   auth: authSlice,
@@ -29,7 +31,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[userApi.reducerPath]}`, 'pointInput']
+  blacklist: ['auth', `${[pointApi.reducerPath]}`, `${[userApi.reducerPath]}`, 'pointInput', 'updatePointInput']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

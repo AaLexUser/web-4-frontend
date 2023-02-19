@@ -1,13 +1,14 @@
 import {createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import _Avatar from '../../types/Avatar'
+import { serverHost } from '../../utils/config'
 
 export const userApi = createApi({
   reducerPath: 'userApi',
   tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1/', 
+    baseUrl: serverHost + 'api/v1/', 
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:8080/api/*',
+      'Access-Control-Allow-Origin': serverHost + 'api/*',
     }
   }),
   endpoints: (build) => ({

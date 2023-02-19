@@ -1,15 +1,16 @@
 import {createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import Point from '../../types/Point'
 import PointResponse from '../../types/PointResponse'
+import { serverHost } from '../../utils/config'
 
 
 export const pointApi = createApi({
   reducerPath: 'pointApi',
   tagTypes: ['Points'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1/', 
+    baseUrl: serverHost + 'api/v1/', 
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:8080/api/*',
+      'Access-Control-Allow-Origin': serverHost + 'api/*',
     }
   }),
   endpoints: (build) => ({
